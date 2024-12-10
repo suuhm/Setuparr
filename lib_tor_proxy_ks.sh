@@ -1,4 +1,14 @@
 #!/bin/bash
+#
+# setuparr.sh - A script to manage and configure ARR tools and Tor with a kill-switch.
+#
+# DESCRIPTION
+# -----------
+# This script allows users to install, update, and manage ARR tools (Sonarr, Radarr, etc.),
+# install Tor, and configure a kill-switch to prevent leaks.
+#
+# Version 0.1b -(c) 2024 by suuhmer
+#
 
 # Set this to true for allowing IP private ranges
 ALLOW_PRIV_RANGE=false
@@ -44,7 +54,6 @@ delete_rules() {
     echo -e "${GREEN}Rules removed.${RESET}"
 }
 
-# Function to check for iptables rules
 check_rules() {
     echo -e "${YELLOW}Checking iptables rules...${RESET}"
     if sudo iptables -L OUTPUT -v -n | grep -q "REJECT"; then
@@ -62,7 +71,6 @@ check_rules() {
     fi
 }
 
-# Function to check if Tor is installed, running, or needs action
 check_tor() {
     echo -e "${YELLOW}Checking if Tor is installed...${RESET}"
     if ! command -v tor &> /dev/null; then
