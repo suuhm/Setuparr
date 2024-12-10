@@ -51,7 +51,7 @@ Easy to use tool for manage and installing the arr stack like Sonarr, Radarr, Pr
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/setuparr.git
+   git clone https://github.com/suuhm/setuparr.git
    cd setuparr && chmod +x *.sh
    ```
 2.x Now simply run the script on Linux:
