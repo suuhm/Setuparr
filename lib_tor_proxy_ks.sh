@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# setuparr.sh - A script to manage and configure ARR tools and Tor with a kill-switch.
+# lib_tor_proxy_ks.sh - A script to manage and configure ARR tools and Tor with a kill-switch.
 #
 # DESCRIPTION
 # -----------
