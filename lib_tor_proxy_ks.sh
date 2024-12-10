@@ -1,16 +1,21 @@
 #!/bin/bash
 
+# Set this to true for allowing IP private ranges
+ALLOW_PRIV_RANGE=false
+
 # Color codes
 GREEN='\033[0;32m'
 RED='\033[0;31m[*] '
 YELLOW='\033[0;33m[*] '
 RESET='\033[0m'
 
-# Dynamically find Tor user
+
 TOR_USER=$(grep -Po '(?<=^User ).*' /etc/tor/torrc | head -n 1)
 if [ -z "$TOR_USER" ]; then
-    echo "Tor user not found in /etc/tor/torrc. Falling back to default: debian-tor."
-    TOR_USER="debian-tor"
+    TOR_USER=$(ls -ld /var/lib/tor | awk '{print $3}')
+else
+    echo "Tor user not found in /etc/tor/torrc and /var/lib/tor. Falling back to default: tor."
+    TOR_USER="tor"
 fi
 
 add_rules() {
@@ -20,6 +25,12 @@ add_rules() {
 	echo -e "${YELLOW}Applying iptables rules...${RESET}"
 	sudo iptables -A OUTPUT -m owner --uid-owner "$TOR_USER" -j ACCEPT
 	sudo iptables -A OUTPUT -d 127.0.0.1 -j ACCEPT
+	# Allow Priv Ranges:
+	if [ ${ALLOW_PRIV_RANGE} = "true" ]; then
+		sudo iptables -A OUTPUT -d 192.168.0.0/16 -j ACCEPT
+		sudo iptables -A OUTPUT -d 10.0.0.0/8 -j ACCEPT
+		sudo iptables -A OUTPUT -d 172.16.0.0/12 -j ACCEPT
+	fi
 	sudo iptables -A OUTPUT -j REJECT
 
 echo -e "${GREEN}iptables rules applied successfully.${RESET}"
