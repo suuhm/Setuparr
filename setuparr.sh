@@ -1,4 +1,14 @@
 #!/bin/bash
+#
+# setuparr.sh - A script to manage and configure ARR tools and Tor with a kill-switch.
+#
+# DESCRIPTION
+# -----------
+# This script allows users to install, update, and manage ARR tools (Sonarr, Radarr, etc.),
+# install Tor, and configure a kill-switch to prevent leaks.
+#
+# Version 0.1b -(c) 2024 by suuhmer
+#
 
 set -e
 
@@ -9,7 +19,7 @@ YELLOW='\033[0;33m'
 RED='\033[0;31m[!] '
 RESET='\033[0m'
 
-# Banner
+
 display_banner() {
     echo -e "${BLUE}"
     echo "███████╗███████╗████████╗██╗   ██╗██████╗  █████╗ ██████╗ ██████╗ "
