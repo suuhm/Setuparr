@@ -7,7 +7,6 @@
     Version 0.1b -(c) 2024 by suuhmer
 #>
 
-# Display Banner
 function Show-Banner {
     Write-Host "`n==================================================================`n" -ForegroundColor Cyan
     Write-Host "███████╗███████╗████████╗██╗   ██╗██████╗  █████╗ ██████╗ ██████╗ " -ForegroundColor Cyan
@@ -25,7 +24,6 @@ function Show-Banner {
 function Install-TorKillSwitch {
     Write-Host "Installing Tor with Kill-Switch..." -ForegroundColor Green
     
-    # Install Tor
     if (!(Get-Command "tor" -ErrorAction SilentlyContinue)) {
         Write-Host "Downloading Tor..." -ForegroundColor Cyan
         Invoke-WebRequest -Uri https://www.torproject.org/dist/torbrowser/12.0.1/tor-win32.zip -OutFile "$env:Temp\tor.zip"
@@ -67,7 +65,6 @@ function Install-TorKillSwitch {
     Write-Host "Kill-Switch configured successfully!" -ForegroundColor Green
 }
 
-# Install ARR Tools
 function Install-ARRTools {
     param (
         [string[]]$Tools
@@ -123,8 +120,6 @@ function Display-SystemInfo {
     }
 }
 
-
-# Restart ARR Services
 function Restart-Services {
     Write-Host "Restarting ARR services..." -ForegroundColor Green
     $services = @("Sonarr", "Radarr", "Readarr")
@@ -138,7 +133,6 @@ function Restart-Services {
     }
 }
 
-# Main Menu
 function Main-Menu {
     while ($true) {
         Show-Banner
