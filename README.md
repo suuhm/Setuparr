@@ -1,5 +1,5 @@
 # Setuparr
-Easy to use tool for manage and installing the arr stack like Sonarr, Radarr, Prowlarr, Readarr etc included a Tor with Killswitch function on Linux or Windwws OS
+Easy to use tool for manage and installing the arr stack like Sonarr, Radarr, Prowlarr, Readarr etc included a Tor with Killswitch function on Linux or Windows OS
 
 `SetupARR` is a collection of Bash and Powershell scripts designed to simplify the installation and configuration of various media management tools like Sonarr, Radarr, and Readarr. It also includes functionality to install Tor with a kill switch for secure downloads.
 
