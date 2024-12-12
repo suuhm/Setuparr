@@ -1,0 +1,14 @@
+#
+# Optional torrc file 
+# for setuparr_winver.ps1:
+#
+SocksPort 9050
+#ControlPort 9051
+#Bypass priv subnets in
+#ExitPolicyRejectPrivate 1
+Log notice stdout
+#CookieAuthentication 1
+#ControlSocket /run/tor/control
+DataDirectory C:\Tor\data
+GeoIPFile C:\Tor\data\geoip
+GeoIPv6File C:\Tor\data\geoip6
